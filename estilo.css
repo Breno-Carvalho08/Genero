@@ -1,0 +1,49 @@
+body{
+
+background-color: rgb(66, 66, 241);
+font: normal 15pt arial;
+
+}
+
+header{
+
+    margin: auto;
+    text-align: center;
+    color: white;
+   
+
+
+}
+
+section {
+
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    width: 500px;
+    margin: auto;
+    box-shadow: 5px /* espaçamento lateral  */ 5px /* espaçamento vertical */ 10px /* espalhamento */ rgba(0, 0, 0, 0.568);
+
+
+}
+
+
+div{
+
+    text-align: left;
+    padding: 10px;
+    
+    
+
+    
+}
+
+
+
+footer{
+
+    text-align: center;
+    font-style: oblique;
+    color: white
+
+}

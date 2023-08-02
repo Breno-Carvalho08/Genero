@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Modelo de Exercício </title>
+    <link rel="stylesheet" href="estilo.css">
+
+</head>
+<body>
+    <header>
+        <h1> Verificador de Idade </h1>
+    </header>
+
+    <section>
+
+        <div> Ano de Nascimento: <input type="number" id="idade"></div>
+        <div> Sexo:  <input type="radio" name="radsex" id="masc" >
+                     <label for="masc"> Masculino </label>
+                     <input type="radio" name="radsex" id="fem">  <!-- quando colocamos esse "radio" o 'name' deles tem que ser igual, se não conseguimos selecionar os dois -->
+                     <label for="fem"> Feminino </label>
+                
+        </div>
+        <input type="button" value="Verificar" onclick = "verificar()">
+
+        <p>Preencha os dados acima para saber o resultado!</p> 
+        
+
+        
+
+
+    </section>
+    
+    <footer>
+        <p>&copy; Breno Carvalho</p>
+
+    </footer>
+    <script>
+
+       function verificar(){
+
+       var data = new Date()
+
+       var ano = data.getFullYear() // pega o ano atual
+       
+       var nasc = document.getElementById('idade')
+
+       var res = document.querySelector('p') // só será usado para escrevermos o que vem no final, lá no "res.innerHTML = ..." e acresentar a imagem logo abaixo res.appendChild()
+
+       var fsex = document.getElementsByName("radsex") // o "input-radio" TEM QUE TER O MESMO NOME, pois assim quando selecionarmos um o outro é desmarcado
+
+       var idade = ano - Number(nasc.value) // Armazena o valor numérico
+
+       var genero =  "" // criamos essa variavel para caso quisermos escrever algo depois nela podemos, alguma frase, valor.
+
+       var img = document.createElement('img') // sem precisar ir no HTML conseguimos criar a tag "img" a partir do Java Script
+
+       img.setAttribute('id','foto') // == <img id= "foto"> mas feito no Java Script
+    
+       if(nasc.value.length == 0 || nasc.value > ano || idade > 150){
+            alert ("Preencha os dados corretamente!")
+            return // coloquei esse return aqui pra se caso não colocarmos o ano ele retornar para o início
+        }
+           
+
+       else if(fsex[0].checked){ // quando tivermos o "input radio", esse '.checked' serve para dizer que "se ele for marcardo" acontece tal ação, caso contrário, outra ação acontece
+
+        genero = 'Homem'
+
+         if(idade < 10){
+            res.innerHTML = `Detectamos um garoto de ${idade} anos`
+            res.style.textAlign = "center"
+            img.setAttribute("src", "foto bebe masculino.jpg") // NO HTML : <img src="foto bebe masculino.jpg"
+            res.appendChild(img) // acrescenta ao elemento selecionado o que for declarado na sequência entre parênteses.
+            img.style.borderRadius = '50%' // CSS BRABO
+            img.style.width = "250px" // CSS BRABO
+            img.style.height = "250px" // CSS BRABO
+            img.style.marginTop = "25px" // CSS BRABO
+
+            
+            } else if(idade > 10 && idade < 17){
+
+                res.innerHTML = `Detectamos um adolescente de ${idade} anos`
+                res.style.textAlign = "center"
+                img.setAttribute('src', 'adolescente m.jpg')
+                res.appendChild(img)
+                img.style.borderRadius = '50%' // CSS BRABO
+                img.style.width = "250px" // CSS BRABO
+                img.style.height = "250px" // CSS BRABO
+                img.style.marginTop = "25px" // CSS BRABO
+
+
+            
+                } else if(idade > 18 && idade < 29){
+                    res.innerHTML = `Detectamos um jovem de ${idade} anos`
+                    res.style.textAlign = "center"
+                    img.setAttribute('src','jovem adulto h.jpg')
+                    res.appendChild(img) // acresentamos a tag 'res' a o que está dentro do parenteses, que no caso é a imagem
+                    img.style.borderRadius = "50%"
+                    img.style.width = "250px"
+                    img.style.height = "250px"
+                    img.style.marginTop = "25px"
+                   
+                    } else if(idade > 29 && idade < 59){
+                        res.innerHTML = `Detectamos um adulto de ${idade} anos`
+                        res.style.textAlign = "center"
+                        img.setAttribute('src', 'adulto h.jpg')
+                        res.appendChild(img) // append == acrescentar
+                        img.style.borderRadius = "50%"
+                        img.style.width = "250px"
+                        img.style.height ="250px"
+                        img.style.marginTop = "25px"
+ 
+                        } else {
+
+                            res.innerHTML = `Detectamos um idoso de ${idade} anos`
+                            res.style.textAlign = "center"
+                            img.setAttribute('src', 'idoso h.jpg')
+                            res.appendChild(img)
+                            img.style.borderRadius = "50%"
+                            img.style.width = "250px"
+                            img.style.height ="250px"
+                            img.style.marginTop = "25px"
+                        }
+    }
+        
+        else if(fsex[1].checked) {
+
+        genero = "Mulher"
+
+            if(idade < 10){
+
+                res.innerHTML = `Detectamos uma menina de ${idade} anos`
+                res.style.textAlign = "center"
+                img.setAttribute("src", "foto bebe feminino.jpg") // NO HTML :<img src="foto bebe feminino"
+                res.appendChild(img)
+                img.style.borderRadius = '50%' // CSS BRABO
+                img.style.width = "250px" // CSS BRABO
+                img.style.height = "250px" // CSS BRABO
+                img.style.marginTop = "25px" // CSS BRABO
+
+
+
+                } else if(idade > 10 && idade < 17){
+
+                    res.innerHTML = `Detectamos uma adolescente de ${idade} anos`
+                    res.style.textAlign = "center"
+                    img.setAttribute('src', 'adolescente f.jpg')
+                    res.appendChild(img)
+                    img.style.borderRadius = "50%"
+                    img.style.width = "250px"
+                    img.style.height = "250px"
+                    img.style.marginTop = "25px"
+
+
+                    } else if(idade > 18 && idade < 29){
+
+                        res.innerHTML = `Detectamos uma jovem de ${idade} anos` 
+                        res.style.textAlign = "center"
+                        img.setAttribute('src', 'jovem adulto m.jpg')
+                        res.appendChild(img)
+                        img.style.borderRadius = "50%"
+                        img.style.width ="250 px"
+                        img.style.height = "250px"
+                        img.style.marginTop = "25px"
+
+                        } else if(idade > 29 && idade < 59){
+
+                            res.innerHTML = `Detectamos um adulto de ${idade} anos` 
+                            res.style.textAlign = "center"
+                            img.setAttribute('src', 'adulto m.jpg')
+                            res.appendChild(img)
+                            img.style.borderRadius ="50%"
+                            img.style.width = "250px"
+                            img.style.height ="250px"
+                            img.style.marginTop= "25px"
+
+                                } else {
+                                    res.innerHTML = `Detectamos uma idosa de ${idade} anos` 
+                                    res.style.textAlign = "center"
+                                    img.setAttribute('src', 'idoso m.jpg')
+                                    res.appendChild(img)
+                                    img.style.borderRadius ="50%"
+                                    img.style.width = "250px"
+                                    img.style.height ="250px"
+                                    img.style.marginTop= "25px"
+                            }
+        
+       }
+      
+
+    }
+   
+
+ 
+    </script>
+</body>
+</html>
